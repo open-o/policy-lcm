@@ -33,12 +33,12 @@ msbServerAddr: http://127.0.0.1:80
 #    port: 8080
 server:
   type: simple
-  rootPath: '/openoapi/policy-lcm/v1/*'
+  rootPath: '/openoapi/pollcm/v1/*'
   applicationContextPath: /
   adminContextPath: /admin
   connector:
     type: http
-    port: 8269
+    port: 8903
 
 # Logging settings.
 logging:

@@ -119,6 +119,18 @@
             <artifactId>retrofit</artifactId>
             <version>${retrofit.version}</version>
         </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <!-- consumer -->
+        <dependency>
+            <groupId>com.eclipsesource.jaxrs</groupId>
+            <artifactId>consumer</artifactId>
+            <version>${jaxrs.consumer.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -45,7 +45,7 @@ import io.swagger.annotations.ApiResponses;
 /**
  * The class to provide L2vpn resource.
  */
-@Path("/openoapi/policy-lcm/v1/")
+@Path("/openoapi/pollcm/v1/")
 @Produces(MediaType.APPLICATION_JSON)
 @Api(tags = {"PolicyLcm API"})
 public class LcmResource {

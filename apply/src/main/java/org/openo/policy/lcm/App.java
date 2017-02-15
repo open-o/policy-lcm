@@ -18,15 +18,13 @@ package org.openo.policy.lcm;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import org.eclipse.jetty.util.component.LifeCycle;
-import org.openo.policy.lcm.CustomHealthCheck;
-import org.openo.policy.lcm.LcmResource;
+import org.openo.policy.lcm.common.Config;
+import org.openo.policy.lcm.common.ServiceRegistrer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
-import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.server.SimpleServerFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -88,10 +86,17 @@ public class App extends Application<AppConfig> {
         environment.jersey().register(new LcmResource());
 
         environment.getObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        Config.setConfigration(config);
+        initService();
 
         initSwaggerConfig(config, environment);
     }
 
+    private void initService() {
+        Thread registerService = new Thread(new ServiceRegistrer());
+        registerService.setName("register policy lcm service to Microservice Bus");
+        registerService.start();
+    }
 
     private void initSwaggerConfig(AppConfig configuration, Environment environment) {
         environment.jersey().register(new ApiListingResource());
